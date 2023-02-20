@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Producto } from '../interfaces/producto';
 
 @Component({
@@ -9,6 +9,8 @@ import { Producto } from '../interfaces/producto';
 export class SinEstadoComponent {
 
   @Input() producto!: Producto;
+
+  @Output() productoSeleccionado: EventEmitter<Producto> = new EventEmitter()
 
   private disabled:boolean;
   public accionCompra:string;
@@ -21,6 +23,8 @@ export class SinEstadoComponent {
   seleccionarItem(item:Producto) {
     this.disabled = false;
     this.accionCompra = "AÑADIDO AL CARRITO!";
+	  // Para el evento:
+	  this.productoSeleccionado.emit(this.producto)    
   }
 
   isItemDisabled():boolean {

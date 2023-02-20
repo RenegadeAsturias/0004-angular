@@ -1,6 +1,6 @@
 export interface Producto {
 
-	precio?: number;
+	precio:number;
 	titulo?: string;
 	imagen?: string;
 	texto?:  string;    

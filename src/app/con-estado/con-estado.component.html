@@ -1,11 +1,31 @@
 <h2 class="title">Listado de productos...</h2>
 <div class="columns">
 	<div class="column" *ngFor="let item of modeloTienda.tiendaItems">
-		<app-sin-estado [producto]="item"></app-sin-estado>
+		<app-sin-estado 
+					[producto]="item"
+					(productoSeleccionado)="onProductoSeleccionado($event)">
+		</app-sin-estado>
 	</div>
 </div>
 
-<h2 class="title">Listado de productos comprados...</h2>
 <section>
-	<li *ngFor="let itemComprado of itemsComprados">{{itemComprado.titulo}}</li>
+	<div *ngIf="itemsComprados.length > 0">
+		<h2 class="title">Listado de productos comprados...</h2>
+		<li *ngFor="let itemComprado of itemsComprados">
+			<b>Título:</b>{{itemComprado.titulo}}<br/>
+			<b>Precio:</b>{{itemComprado.precio}}
+		</li>
+	</div>
+
+	<br/><h3>Total productos comprados: {{getPrecioTotal() | currency }}</h3>
+
+	<br/>
+	<button class="button" 
+				(click)="realizarPago()"
+				[disabled]="noHayItemsComprados()" 
+				>BUY NOW!</button>
+	<br/>
+	
 </section>
+
+<app-alerta-confirmacion></app-alerta-confirmacion>
