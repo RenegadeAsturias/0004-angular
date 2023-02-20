@@ -10,6 +10,18 @@ import { Tienda } from '../models/tienda.model';
 export class ConEstadoComponent {
 
 	modeloTienda:Tienda = new Tienda();
-	itemsComprados:Array<Producto> = [];  
+	itemsComprados:Array<Producto>;  
+
+  constructor() {
+    this.itemsComprados=[]; // Inicializamos el Array
+  }
+
+  /**
+  seleccionarItem(item:Producto){
+    if(!this.itemsComprados.includes(item)) {
+      this.itemsComprados.push(item);
+    }
+  } */
 
 }
+

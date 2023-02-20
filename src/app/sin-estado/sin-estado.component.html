@@ -1,0 +1,10 @@
+<!----------- --------------->
+<b>Título:</b>{{producto.titulo}}<br/>
+<b>Descripción:</b>{{producto.texto}}<br/>
+<!----------- --------------->
+<button class="button" 
+    (click)="seleccionarItem(producto)" 
+    [disabled]="isItemDisabled()" >
+        {{accionCompra}}
+</button><br/><br/>
+
